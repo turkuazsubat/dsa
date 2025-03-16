@@ -1,7 +1,7 @@
-# VSCode klasörü ve içindeki dosyalar
+
 .vscode/
 
-# Derleme dosyaları
+
 *.exe
 *.out
 *.o
@@ -9,9 +9,9 @@
 *.dll
 *.dSYM
 
-# MacOS sistem dosyaları
+
 .DS_Store
 
-# Windows sistem dosyaları
+
 Thumbs.db
 ehthumbs.db
