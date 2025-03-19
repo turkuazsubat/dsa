@@ -44,6 +44,9 @@ void insertion(Node*& head,Node*& tail,int value)
 
 }
 
+void searching()
+{}
+
 int main()
 {
 
