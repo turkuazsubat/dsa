@@ -44,8 +44,20 @@ void insertion(Node*& head,Node*& tail,int value)
 
 }
 
-void searching()
-{}
+bool searching(Node* head,int value)
+{
+    Node* temp = head;
+
+    while (temp != nullptr && temp->data != value )
+    {
+        temp = temp->next;
+    }  
+
+    if (temp == nullptr) return false;
+
+    return true;
+
+}
 
 int main()
 {
@@ -63,6 +75,7 @@ int main()
         std::cout<<"0. For Exit"<<std::endl;
         std::cout<<"1. For Insert a Data"<<std::endl;
         std::cout<<"2. For Show List"<<std::endl;
+        std::cout<<"3. For Search to the List"<<std::endl;
         
         std::cin>>choice;
 
@@ -81,6 +94,19 @@ int main()
         if(choice == 2)
         {
             printds(head);
+        }
+        if(choice == 3)
+        {
+            bool resu;
+            std::cout<<"Enter searching value: ";
+            std::cin>>value;
+            std::cout<<std::endl;
+
+            resu = searching(head,value);
+            
+            if(resu) std::cout<<"There Are"<<std::endl;
+            else std::cout<<"Doesn't Exist"<<std::endl;
+
         }
         
 
