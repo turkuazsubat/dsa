@@ -112,12 +112,27 @@ while (temp->next != nullptr) {
     temp = temp->next;
 }
     
-
-    
-
     //Case 6
     return false;
 
+}
+
+void reverseTravel(Node* head,Node* tail)
+{
+    if(tail != nullptr)
+    {
+        Node* ttemp =tail;
+        while(ttemp != head)
+        {
+            Node* prev = head;
+            while(prev->next!=ttemp) prev=prev->next;
+
+            std::cout<<ttemp->data<<" ";
+            ttemp=prev; 
+        }
+        std::cout<<ttemp->data<<" ";
+     }
+     std::cout<<std::endl;
 }
 
 int main()
@@ -156,6 +171,7 @@ int main()
         if(choice == 2)
         {
             printds(head);
+            reverseTravel(head,tail);
         }
         if(choice == 3)
         {
@@ -169,7 +185,8 @@ int main()
             if(resu) std::cout<<"There Are"<<std::endl;
             else std::cout<<"Doesn't Exist"<<std::endl;
         }
-        // removing
+        
+
         if(choice == 4)
         {
             bool resu;
@@ -182,6 +199,7 @@ int main()
             if(resu) std::cout<<"Value is deleted"<<std::endl;
             else std::cout<<"Doesn't Exist"<<std::endl;
         }
+
         
 
     }
