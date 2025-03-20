@@ -14,14 +14,44 @@ struct Node
 
 };
 
-int main() {
+void show(Node* head,Node* tail)
+{
+    Node* temp = head;
+
+    while(temp!=nullptr)
+    {   
+        std::cout<<temp->data<<" ";
+        temp = temp->next;
+    }
+    std::cout<<std::endl;
+}
+
+void insert(Node*& head, Node*& tail, int value)
+{
+    Node* n = new Node(value);
+    if(head == nullptr)
+    {
+        head = n;
+        tail = n;
+    }
+    else
+    {
+        n->back=tail;
+        tail->next = n;
+        tail = n;
+    }
+}
+
+int main() 
+{
     
     std::cout << "Welcome to the DSA WorkShop" << std::endl;
     
     Node* head = nullptr;
     Node* tail = nullptr;
-    head = tail;
+    int value;
     
+
 
 
     while (true) {
@@ -36,11 +66,24 @@ int main() {
         std::cin >> choice;
 
         
-        if (choice == 0) {
+        if (choice == 0) 
+        {
             break;
         }
 
-        
+        if(choice == 1)
+        {
+            std::cout<<"Enter value: ";
+            std::cin>>value;
+            std::cout<<std::endl;
+
+            insert(head,tail,value);
+        }
+        if(choice == 2)
+        {
+            show(head,tail);        
+        }
+    }
 
     return 0;
 }
