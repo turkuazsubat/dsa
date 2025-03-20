@@ -42,6 +42,60 @@ void insert(Node*& head, Node*& tail, int value)
     }
 }
 
+bool remove(Node*& head, Node*& tail, int value)
+{
+    if(head==nullptr) return false;
+
+    if(value == head->data)
+    {
+        if(head==tail)
+        {
+            head = nullptr;
+            tail = nullptr;
+        }
+        else
+        {
+            head = head->next;
+            head->back = nullptr;
+        }
+        return true;
+    }
+    Node* temp = head->next;
+    while(temp != nullptr && temp->data != value)
+    {
+        temp = temp->next;
+    }
+    if(temp==tail)
+    {
+        tail = tail->back;
+        tail->next = nullptr;
+        return true;
+    }
+    else if(temp!=nullptr)
+    {
+        temp->back->next = temp->next;
+        temp->next->back = temp->back;
+        return true;
+    }
+    return false;
+}
+
+void revtra(Node* tail)
+{
+    Node* n = tail;
+
+    while(n!=nullptr)
+    {
+        std::cout<<n->data<<" ";
+        n= n->back;
+    }
+    std::cout<<std::endl;
+
+
+}
+
+
+
 int main() 
 {
     
@@ -81,7 +135,20 @@ int main()
         }
         if(choice == 2)
         {
-            show(head,tail);        
+            show(head,tail);    
+            revtra(tail);    
+        }
+        if(choice == 4)
+        {
+            int res;
+            std::cout<<"Enter value: ";
+            std::cin>>value;
+            std::cout<<std::endl;
+
+            res = remove(head,tail,value);  
+            if(res) std::cout<<"Remove success";
+            else std::cout<<"Remove failed";
+            std::cout<<std::endl;
         }
     }
 
