@@ -44,6 +44,15 @@ void inOrder(Node* root) {
     inOrder(root->right); // Sağ alt ağacı gez
 }
 
+bool search(Node* root, int value)
+{
+    if(root->data == value) return true;
+    else if(root->data < value) return search(root->right,value);
+    else if(root->data > value) return search(root->left,value);
+
+    return false;
+
+}
 
 
 
@@ -51,6 +60,7 @@ int main() {
     
     std::cout << "Welcome to the DSA WorkShop" << std::endl;
     int value;
+    bool res;
 
     Node* root = nullptr;
 
@@ -70,7 +80,7 @@ int main() {
         if (choice == 0) {
             break;
         }
-        if(choice == 1)
+        else if(choice == 1)
         {
             std::cout<<"Enter value: ";
             std::cin>>value;
@@ -78,8 +88,18 @@ int main() {
 
             insert(root,value);
         }
-        if (choice == 2) {
+        else if (choice == 2) {
             inOrder(root);
+        }
+        else if(choice ==  3) {
+            std::cout<<"Enter value: ";
+            std::cin>>value;
+            std::cout<<std::endl;
+
+            res = search(root,value);
+            
+            if(res == true) std::cout<<"Value here"<<std::endl;
+            else std::cout<<"Value does not exist"<<std::endl;
         }
 
         
